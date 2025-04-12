@@ -14,7 +14,7 @@ A Flask-based web application for managing pets, appointments, and medical recor
 
 - **Backend**: Python, Flask
 - **Database**: MongoDB
-- **Frontend**: HTML, CSS, JavaScript, Bootstrap 5
+- **Frontend**: HTML, CSS, Typescript, JavaScript, Bootstrap 5
 - **Forms**: Flask-WTF
 
 ## Setup Instructions
