@@ -1,0 +1,132 @@
+/* Custom CSS for PetCare Management System */
+
+/* General Styles */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Dashboard Cards */
+.card {
+    border-radius: 10px;
+    border: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 10px 10px 0 0 !important;
+}
+
+/* Navbar styling */
+.navbar {
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+/* Table styling */
+.table thead th {
+    border-top: none;
+    border-bottom: 2px solid #dee2e6;
+    font-weight: 600;
+}
+
+/* Form controls */
+.form-control, .form-select {
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    padding: 10px 15px;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Buttons */
+.btn {
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-weight: 500;
+}
+
+.btn-primary {
+    background-color: #4361ee;
+    border-color: #4361ee;
+}
+
+.btn-primary:hover {
+    background-color: #3a56d4;
+    border-color: #3a56d4;
+}
+
+.btn-outline-primary {
+    color: #4361ee;
+    border-color: #4361ee;
+}
+
+.btn-outline-primary:hover {
+    background-color: #4361ee;
+    border-color: #4361ee;
+}
+
+/* Pet cards */
+.pet-card {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.pet-card-header {
+    background-color: rgba(67, 97, 238, 0.1);
+    padding: 15px;
+}
+
+/* Icons */
+.fa, .fas, .far {
+    vertical-align: middle;
+}
+
+/* Custom badge colors */
+.badge.bg-info {
+    background-color: #4cc9f0 !important;
+}
+
+.badge.bg-warning {
+    background-color: #f8961e !important;
+}
+
+.badge.bg-danger {
+    background-color: #f94144 !important;
+}
+
+.badge.bg-success {
+    background-color: #43aa8b !important;
+}
+
+.badge.bg-primary {
+    background-color: #4361ee !important;
+}
+
+/* Footer */
+footer {
+    color: #6c757d;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar .d-flex {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+}

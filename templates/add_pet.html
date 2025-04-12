@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {% if pet %}Edit Pet{% else %}Add New Pet{% endif %} - PetCare Management
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-header bg-white">
+                <h2 class="h4 mb-0">
+                    {% if pet %}
+                        <i class="fas fa-edit text-primary me-2"></i>Edit Pet: {{ pet.name }}
+                    {% else %}
+                        <i class="fas fa-plus-circle text-primary me-2"></i>Add New Pet
+                    {% endif %}
+                </h2>
+            </div>
+            <div class="card-body">
+                <form method="POST" novalidate>
+                    {{ form.hidden_tag() }}
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="{{ form.name.id }}" class="form-label">Pet Name*</label>
+                            {{ form.name(class="form-control" + (" is-invalid" if form.name.errors else "")) }}
+                            {% for error in form.name.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-6">
+                            <label for="{{ form.species.id }}" class="form-label">Species*</label>
+                            {{ form.species(class="form-select" + (" is-invalid" if form.species.errors else "")) }}
+                            {% for error in form.species.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="{{ form.breed.id }}" class="form-label">Breed</label>
+                            {{ form.breed(class="form-control" + (" is-invalid" if form.breed.errors else "")) }}
+                            {% for error in form.breed.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-4">
+                            <label for="{{ form.age.id }}" class="form-label">Age</label>
+                            {{ form.age(class="form-control" + (" is-invalid" if form.age.errors else "")) }}
+                            {% for error in form.age.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-4">
+                            <label for="{{ form.gender.id }}" class="form-label">Gender</label>
+                            {{ form.gender(class="form-select" + (" is-invalid" if form.gender.errors else "")) }}
+                            {% for error in form.gender.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="{{ form.weight.id }}" class="form-label">Weight (kg)</label>
+                            {{ form.weight(class="form-control" + (" is-invalid" if form.weight.errors else "")) }}
+                            {% for error in form.weight.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+                    <h4 class="h5 mb-3">Owner Information</h4>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="{{ form.owner_name.id }}" class="form-label">Owner Name*</label>
+                            {{ form.owner_name(class="form-control" + (" is-invalid" if form.owner_name.errors else "")) }}
+                            {% for error in form.owner_name.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-6">
+                            <label for="{{ form.owner_phone.id }}" class="form-label">Owner Phone*</label>
+                            {{ form.owner_phone(class="form-control" + (" is-invalid" if form.owner_phone.errors else "")) }}
+                            {% for error in form.owner_phone.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="{{ form.owner_email.id }}" class="form-label">Owner Email</label>
+                            {{ form.owner_email(class="form-control" + (" is-invalid" if form.owner_email.errors else "")) }}
+                            {% for error in form.owner_email.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="{{ form.notes.id }}" class="form-label">Additional Notes</label>
+                        {{ form.notes(class="form-control" + (" is-invalid" if form.notes.errors else ""), rows=3) }}
+                        {% for error in form.notes.errors %}
+                            <div class="invalid-feedback">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <a href="{{ url_for('main.view_pets') }}" class="btn btn-outline-secondary">
+                            <i class="fas fa-arrow-left me-1"></i> Cancel
+                        </a>
+                        {{ form.submit(class="btn btn-primary") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

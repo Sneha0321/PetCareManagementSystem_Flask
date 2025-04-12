@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block title %}Schedule Appointment{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4>{% if appointment %}Edit{% else %}Schedule{% endif %} Appointment</h4>
+                </div>
+                <div class="card-body">
+                    <form method="POST" novalidate>
+                        {{ form.csrf_token }}
+                        
+                        <div class="mb-3">
+                            {{ form.pet_id.label(class="form-label") }}
+                            {% if form.pet_id.errors %}
+                                {{ form.pet_id(class="form-select is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.pet_id.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.pet_id(class="form-select") }}
+                            {% endif %}
+                            <small class="text-muted">Select the pet for this appointment</small>
+                        </div>
+                        
+                        <div class="mb-3">
+                            {{ form.appointment_type.label(class="form-label") }}
+                            {% if form.appointment_type.errors %}
+                                {{ form.appointment_type(class="form-select is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.appointment_type.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.appointment_type(class="form-select") }}
+                            {% endif %}
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                {{ form.appointment_date.label(class="form-label") }}
+                                {% if form.appointment_date.errors %}
+                                    {{ form.appointment_date(class="form-control is-invalid", type="date") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.appointment_date.errors %}
+                                            {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.appointment_date(class="form-control", type="date") }}
+                                {% endif %}
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                {{ form.appointment_time.label(class="form-label") }}
+                                {% if form.appointment_time.errors %}
+                                    {{ form.appointment_time(class="form-control is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.appointment_time.errors %}
+                                            {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.appointment_time(class="form-control") }}
+                                {% endif %}
+                                <small class="text-muted">Format: HH:MM AM/PM</small>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            {{ form.notes.label(class="form-label") }}
+                            {% if form.notes.errors %}
+                                {{ form.notes(class="form-control is-invalid", rows=4) }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.notes.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.notes(class="form-control", rows=4) }}
+                            {% endif %}
+                            <small class="text-muted">Enter any additional notes or instructions</small>
+                        </div>
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a href="{{ url_for('main.view_appointments') }}" class="btn btn-secondary me-md-2">Cancel</a>
+                            <button type="submit" class="btn btn-primary">
+                                {% if appointment %}Update{% else %}Schedule{% endif %} Appointment
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
